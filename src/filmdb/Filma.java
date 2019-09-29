@@ -5,7 +5,9 @@ public class Filma {
 	private ListaAktoreak aktoreak;
 	private int dirua;
 	
-	public Filma() {
+	public Filma(String pIzena, int pDirua) {
+		this.izena = pIzena;
+		this.dirua = pDirua;
 		this.aktoreak=new ListaAktoreak();
 	}
 
