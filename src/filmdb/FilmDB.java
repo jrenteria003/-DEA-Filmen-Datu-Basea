@@ -15,8 +15,8 @@ public class FilmDB {
 		this.filmak = new ListaFilmak();
 	}
 
-	public int main() {
-		datuakKargatu("aaaa");
+	public int main(String arg) {
+		datuakKargatu(arg);
 		return 0;
 	}
 
@@ -41,7 +41,7 @@ public class FilmDB {
 		//	entrada.close();
 		//}
 		//catch(IOException e) {e.printStackTrace();}
-		InputStream fitx = (InputStream) this.getClass().getClassLoader().getResourceAsStream("Lista2.txt");
+		InputStream fitx = (InputStream) this.getClass().getClassLoader().getResourceAsStream(fitxategia);
 
 		InputStreamReader in = new InputStreamReader(fitx);
 	}
