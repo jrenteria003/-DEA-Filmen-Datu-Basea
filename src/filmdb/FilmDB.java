@@ -39,7 +39,7 @@ public class FilmDB {
 			Aktorea p = null;
 			while (entrada.hasNext()) {
 				linea = entrada.nextLine();
-				String[] iz = linea.split("--->");
+				String[] iz = linea.split("\\s+--->\\s+");
 				f = new Filma(iz[0]);
 				//f.gehituAktorea(p);
 			}
