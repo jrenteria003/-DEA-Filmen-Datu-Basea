@@ -1,18 +1,22 @@
 package filmdb;
 
+import java.io.IOException;
+import java.util.Scanner;
+
 public class FilmDB {
 	private ListaFilmak filmak;
-	private static filmDB gureDB;
+	private static FilmDB gureDB;
 
-	private FilmDB sortufilmDB() {
+	private FilmDB() {
 		this.filmak = new ListaFilmak();
 	}
 
 	public int main() {
-		datuakKargatu();
+		datuakKargatu("aaaa");
 		return 0;
+	}
 
-	public static Filmdb getFilmDB() {
+	public static FilmDB getFilmDB() {
 		return gureDB;
 	}
 
@@ -22,10 +26,11 @@ public class FilmDB {
 			Scanner entrada = new Scanner(new FileReader(nomF));
 			String linea;
 			Filma f = null;
+			Aktorea p = null;
 			while (entrada.hasNext()) {
 				linea = entrada.nextLine();
-				String iz = linea.split("\\s+--->");
-				f = new Filma(iz, di);
+				String iz = (String) linea.split("\\s+--->");
+				f = new Filma(iz);
 				//f.gehituAktorea(p);
 			}
 			entrada.close();

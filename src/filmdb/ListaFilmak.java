@@ -1,5 +1,7 @@
 package filmdb;
 
+import java.util.ArrayList;
+
 public class ListaFilmak {
 	private ArrayList<Filma> filmak;
 
@@ -7,7 +9,7 @@ public class ListaFilmak {
 		this.filmak = null;
 	}
 
-	public ListaFilmak getFilmak() {
+	public ArrayList<Filma> getFilmak() {
 		return this.filmak;
 	}
 

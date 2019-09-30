@@ -8,7 +8,13 @@ public class Filma {
 	public Filma(String pIzena, int pDirua) {
 		this.izena = pIzena;
 		this.dirua = pDirua;
-		this.aktoreak=new ListaAktoreak();
+		this.aktoreak = new ListaAktoreak();
+	}
+	
+	public Filma(String pIzena) {
+		this.izena = pIzena;
+		this.dirua = 0;
+		this.aktoreak = new ListaAktoreak();
 	}
 
 	public ListaAktoreak getAktoreak() {
@@ -20,11 +26,11 @@ public class Filma {
 	}
 
 	public void gehituAktorea(Aktorea p) {
-		this.aktoreak.add(p);
+		this.aktoreak.gehitu(p);
 	}
 
 	public void kenduAktorea(Aktorea p) {
-		this.aktoreak.remove(p);
+		this.aktoreak.kendu(p);
 	}
 
 	public void gehituDirua(int d) {
