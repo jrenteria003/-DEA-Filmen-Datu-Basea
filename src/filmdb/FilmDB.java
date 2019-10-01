@@ -7,8 +7,6 @@ import java.util.Scanner;
 
 import java.io.FileReader;
 
-import org.omg.CORBA.portable.InputStream;
-
 import java.util.HashMap;
 
 public class FilmDB {
@@ -20,28 +18,32 @@ public class FilmDB {
 		this.filmak = new ListaFilmak();
 	}
 
-	public int main(String arg) {
-		datuakKargatu(arg);
-		return 0;
+	public static void main(String[] arg) {
+		datuakKargatu(arg[0]);
+		//return 0;
 	}
 
 	public static FilmDB getFilmDB() {
 		return gureDB;
 	}
 
-	public void datuakKargatu(String nomF) {
+	public static void datuakKargatu(String nomF) {
 		// String a = linea.split("\\s+-->");
 
 		try{
 			Scanner entrada = new Scanner(new FileReader(nomF));
 			String linea;
 			Filma f = null;
+			ListaAktoreak aktors = null;
 			Aktorea p = null;
 			while (entrada.hasNext()) {
 				linea = entrada.nextLine();
 				String[] iz = linea.split("\\s+--->\\s+");
 				f = new Filma(iz[0]);
-				//f.gehituAktorea(p);
+				//aktors = new ListaAktoreak();
+				//aktors.gehitu(p);
+				System.out.println(iz[0]);
+				System.out.println(iz[1]);
 			}
 			entrada.close();
 		}
