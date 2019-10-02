@@ -12,8 +12,8 @@ import java.util.HashMap;
 public class FilmDB {
 	private ListaFilmak filmak;
 	private static FilmDB gureDB;
-	private HashMap<String,Aktorea> mapa;
-	private HashMap<String, Filma> mapaFilmak;
+	private static HashMap<String,Aktorea> mapaAktoreak;
+	private static HashMap<String,Filma> mapaFilmak;
 
 	private FilmDB() {
 		this.filmak = new ListaFilmak();
@@ -21,7 +21,6 @@ public class FilmDB {
 
 	public static void main(String[] arg) {
 		datuakKargatu(arg[0]);
-		//return 0;
 	}
 
 	public static FilmDB getFilmDB() {
@@ -46,7 +45,9 @@ public class FilmDB {
 					p = new Aktorea(akt[i]);
 					System.out.println(p.getIzena());
 					f.gehituAktorea(p);
+					mapaAktoreak.put(p.getIzena(), p);
 				}
+				mapaFilmak.put(f.getIzena(), f);
 				f = null;
 			}
 			entrada.close();
