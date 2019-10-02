@@ -11,11 +11,11 @@ import java.util.HashMap;
 
 public class FilmDB {
 	private ListaFilmak filmak;
-	private static FilmDB gureDB;
+	private static FilmDB gureDB = null;
 	private static HashMap<String,Aktorea> mapaAktoreak;
 	private static HashMap<String,Filma> mapaFilmak;
 
-	private FilmDB() {
+	public FilmDB() {
 		this.filmak = new ListaFilmak();
 	}
 
@@ -24,6 +24,9 @@ public class FilmDB {
 	}
 
 	public static FilmDB getFilmDB() {
+		if (gureDB == null) {
+			gureDB = new FilmDB();
+		}
 		return gureDB;
 	}
 
