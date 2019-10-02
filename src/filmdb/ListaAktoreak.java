@@ -1,4 +1,4 @@
-package filmdb;
+jpackage filmdb;
 
 import java.util.ArrayList;
 
@@ -14,8 +14,8 @@ public class ListaAktoreak {
 	}
 
 	public void gehituAktorea(Aktorea p) {
-		if(!(badagoAktorea(p))) this.aktoreak.add(p);
-		//TODO errore mezua gehitu
+		if(!(badagoAktorea(p))){ this.aktoreak.add(p);}
+		else {throw new Exception("badago aktorea jadanik");}//TODO ez dakit hau ondo dagoen
 	}
 
 	public boolean badagoAktorea(Aktorea p) {
