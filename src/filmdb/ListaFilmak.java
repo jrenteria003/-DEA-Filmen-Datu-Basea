@@ -1,24 +1,40 @@
 package filmdb;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ListaFilmak {
-	private ArrayList<Filma> filmak;
+	private  HashMap<String,Filma> mapaFilmak;
+	
+	public ListaFilmak{
+		this.mapaFilmak=new HashMap<String,Filma>();
+	}
 
-	public void sortuListaFilmak() {
+	public void sortuListaFilmak() { //no se que es esto
 		this.filmak = null;
 	}
 
-	public ArrayList<Filma> getFilmak() {
-		return this.filmak;
+	public HashMap<String,Filma> getFilmak() {
+		return this.mapaFilmak;
 	}
 
 	public void gehituFilma(Filma f) {
-		this.filmak.add(f);
+		if (!(this.mapaFilmak.containsKey(f.getIzena()))){
+			this.mapaFilmak.put(f.getIzena(),f);
+		}
+		else {
+			throw new Exception("badago aktorea jadanik"); //ez dakit hau ondo dagoen
+		}
+		//this.filmak.add(f);
 	}
 
 	public void kenduFilma(Filma f) {
-		this.filmak.remove(f);
+		if (this.mapaFilmak.containsKey(f.getIzena())){
+			this.mapaFilmak.remove(f.getIzena());
+		}
+		else {
+			throw new Exception("ez dago aktore hau"); //ez dakit hau ondo dagoen
+		}
 	}
 
 }
