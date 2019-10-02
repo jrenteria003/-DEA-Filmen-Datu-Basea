@@ -47,7 +47,7 @@ public class FilmDB {
 				for(int i = 0; i < akt.length; i++) {
 					p = null;
 					p = new Aktorea(akt[i]);
-					System.out.println(i);
+					System.out.println(p.getIzena());
 					f.gehituAktorea(p);
 				}
 				f = null;
