@@ -1,21 +1,21 @@
-jpackage filmdb;
+package filmdb;
 
 import java.util.ArrayList;
 
 public class ListaAktoreak {
 	private ArrayList<Aktorea> aktoreak;
 
-	public void sortuListaAktoreak() {
-		this.aktoreak=null;
+	public ListaAktoreak() {
+		this.aktoreak = new ArrayList<Aktorea>();
 	}
 
 	public ArrayList<Aktorea> getAktoreak() {
 		return this.aktoreak;
 	}
 
-	public void gehituAktorea(Aktorea p) {
+	public void gehituAktorea(Aktorea p) throws Exception {
 		if(!(badagoAktorea(p))){ this.aktoreak.add(p);}
-		else {throw new Exception("badago aktorea jadanik");}//TODO ez dakit hau ondo dagoen
+		else {throw new Exception("badago aktorea jadanik");} //TODO ez dakit hau ondo dagoen
 	}
 
 	public boolean badagoAktorea(Aktorea p) {

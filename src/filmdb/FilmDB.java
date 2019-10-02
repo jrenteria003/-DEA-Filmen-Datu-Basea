@@ -42,8 +42,15 @@ public class FilmDB {
 				f = new Filma(iz[0]);
 				//aktors = new ListaAktoreak();
 				//aktors.gehitu(p);
+				String[] akt = iz[1].split("\\s+&&&\\s+");
 				System.out.println(iz[0]);
-				System.out.println(iz[1]);
+				for(int i = 0; i < akt.length; i++) {
+					p = null;
+					p = new Aktorea(akt[i]);
+					System.out.println(i);
+					f.gehituAktorea(p);
+				}
+				f = null;
 			}
 			entrada.close();
 		}
