@@ -12,15 +12,13 @@ import java.util.HashMap;
 public class FilmDB {
 	private ListaFilmak filmak;
 	private static FilmDB gureDB = null;
-	private static HashMap<String,Aktorea> mapaAktoreak;
-	private static HashMap<String,Filma> mapaFilmak;
+	private HashMap<String,Aktorea> mapaAktoreak;
+	private HashMap<String,Filma> mapaFilmak;
 
 	public FilmDB() {
-		this.filmak = new ListaFilmak();
-	}
-
-	public static void main(String[] arg) {
-		datuakKargatu(arg[0]);
+		//this.filmak = new ListaFilmak();
+		this.mapaAktoreak = new HashMap<String,Aktorea>();
+		this.mapaFilmak = new HashMap<String,Filma>();
 	}
 
 	public static FilmDB getFilmDB() {
@@ -30,7 +28,7 @@ public class FilmDB {
 		return gureDB;
 	}
 
-	public static void datuakKargatu(String nomF) {
+	public void datuakKargatu(String nomF) {
 		try{
 			Scanner entrada = new Scanner(new FileReader(nomF));
 			String linea;
@@ -38,11 +36,12 @@ public class FilmDB {
 			ListaAktoreak aktors = null;
 			Aktorea p = null;
 			while (entrada.hasNext()) {
+				f = null;
 				linea = entrada.nextLine();
 				String[] iz = linea.split("\\s+--->\\s+");
 				f = new Filma(iz[0]);
 				String[] akt = iz[1].split("\\s+&&&\\s+");
-				System.out.println(iz[0]);
+				System.out.println(f.getIzena());
 				for(int i = 0; i < akt.length; i++) {
 					p = null;
 					p = new Aktorea(akt[i]);
@@ -51,7 +50,6 @@ public class FilmDB {
 					mapaAktoreak.put(p.getIzena(), p);
 				}
 				mapaFilmak.put(f.getIzena(), f);
-				f = null;
 			}
 			entrada.close();
 		}

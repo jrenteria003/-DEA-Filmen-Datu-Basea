@@ -3,7 +3,7 @@ package filmdb;
 public class Aktorea {
 	private String izena;
 	
-	public Aktorea(String pIzena){
+	public Aktorea(String pIzena) {
 		this.izena=pIzena;
 	}
 
