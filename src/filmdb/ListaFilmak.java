@@ -23,5 +23,9 @@ public class ListaFilmak {
 	public void kenduFilma(Filma f) {
 		if(!this.filmak.contains(f)) this.filmak.remove(f);
 	}
+	
+	public boolean badago(Filma f) {
+		return this.filmak.contains(f);
+	}
 
 }
