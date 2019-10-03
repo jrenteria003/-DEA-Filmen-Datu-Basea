@@ -5,8 +5,11 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.util.Scanner;
 
-import java.io.FileReader;
+//import com.sun.tools.javac.util.List;
 
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class FilmDB {
@@ -45,14 +48,30 @@ public class FilmDB {
 				for(int i = 0; i < akt.length; i++) {
 					p = null;
 					p = new Aktorea(akt[i]);
-					System.out.println(p.getIzena());
-					f.gehituAktorea(p);
-					mapaAktoreak.put(p.getIzena(), p);
+					if(!mapaAktoreak.containsKey(p.getIzena())) {
+						mapaAktoreak.put(p.getIzena(), p);
+						f.gehituAktorea(p);
+					} else {
+						Aktorea p2 = mapaAktoreak.get(akt[i]);
+						f.gehituAktorea(p2);
+					}
 				}
 				mapaFilmak.put(f.getIzena(), f);
 			}
 			entrada.close();
 		}
 		catch(IOException e) {e.printStackTrace();}
+	}
+	
+	public void konprobatu() {
+		System.out.println(mapaAktoreak.size());
+		System.out.println(mapaFilmak.size());
+	}
+	
+	public void ordenatuAktoreMapa() {
+		Object[] aktoreberriak;
+		aktoreberriak = this.mapaAktoreak.keySet().toArray();
+		//TODO
+		//quicksort edo bestelako algoritmoa erabili!!
 	}
 }
