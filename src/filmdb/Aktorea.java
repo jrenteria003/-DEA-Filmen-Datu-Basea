@@ -27,4 +27,8 @@ public class Aktorea {
 			this.agertutakoFilmak.kenduFilma(f);
 	}
 
+	public int compareTo(Aktorea lag) {
+		return this.izena.compareTo(lag.getIzena());
+	}
+
 }

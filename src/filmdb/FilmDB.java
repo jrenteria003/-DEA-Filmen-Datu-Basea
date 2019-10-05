@@ -69,9 +69,54 @@ public class FilmDB {
 	}
 	
 	public void ordenatuAktoreMapa() {
-		Object[] aktoreberriak;
-		aktoreberriak = this.mapaAktoreak.keySet().toArray();
-		//TODO
-		//quicksort edo bestelako algoritmoa erabili!!
+		Object[] aktorelag;
+		aktorelag = this.mapaAktoreak.keySet().toArray();
+		Aktorea[] aktoreberriak = null;
+		for(int i = 0; i < aktorelag.length; i++) {
+			aktoreberriak[i] = this.mapaAktoreak.get(aktorelag[i]);
+		}
+		quickSort(aktoreberriak);
+		
+		for(int i = 0; i < aktoreberriak.length; i++) {
+			System.out.println(aktoreberriak[i].getIzena());
+		}
+	}
+	
+	public void quickSort(Aktorea[] taula){
+		quickSort(taula, 0, taula.length-1);
+	}
+		
+	private void quickSort(Aktorea[ ] taulaBat, int hasiera, int bukaera){
+		if ( bukaera - hasiera> 0 ) { // taulan elementu bat baino gehiago
+			int indizeaZatiketa = zatiketa(taulaBat, hasiera, bukaera);
+			quickSort(taulaBat, hasiera, indizeaZatiketa - 1);
+			quickSort(taulaBat, indizeaZatiketa + 1, bukaera);
+		}
+	}
+
+	private int zatiketa(Aktorea[] taula, int i, int f){
+		Aktorea lag = taula[i];
+		int ezker = i;
+		int eskuin = f;
+		while ( ezker < eskuin ){
+			while ( taula[ezker].compareTo(lag) <= 0 && ezker < eskuin)
+				ezker++;
+			while ( taula[eskuin].compareTo(lag) > 0 )
+				eskuin--;
+			if ( ezker < eskuin ) {
+				taula = swap(taula, ezker, eskuin);
+				
+			}
+		}
+		taula[i] = taula[eskuin];
+		taula[eskuin] = lag;
+		return eskuin;
+	}
+
+	private Aktorea[] swap(Aktorea[] taula, int ezker, int eskuin) {
+		Aktorea lag = taula[ezker];
+		taula[ezker] = taula[eskuin];
+		taula[eskuin] = lag;
+		return taula;
 	}
 }
