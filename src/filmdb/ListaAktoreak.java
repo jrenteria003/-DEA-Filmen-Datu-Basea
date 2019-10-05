@@ -15,7 +15,7 @@ public class ListaAktoreak {
 
 	public void gehituAktorea(Aktorea p) throws Exception {
 		if(!(badagoAktorea(p))){ this.aktoreak.add(p);}
-		else {throw new Exception("badago aktorea jadanik");} //TODO ez dakit hau ondo dagoen
+		//else {throw new Exception("badago aktorea jadanik");}
 	}
 
 	public boolean badagoAktorea(Aktorea p) {
