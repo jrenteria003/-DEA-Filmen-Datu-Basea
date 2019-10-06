@@ -71,9 +71,11 @@ public class FilmDB {
 	public void ordenatuAktoreMapa() {
 		Object[] aktorelag;
 		aktorelag = this.mapaAktoreak.keySet().toArray();
-		Aktorea[] aktoreberriak = null;
+		Aktorea[] aktoreberriak;
+		aktoreberriak = new Aktorea[mapaAktoreak.size()];
 		for(int i = 0; i < aktorelag.length; i++) {
 			aktoreberriak[i] = this.mapaAktoreak.get(aktorelag[i]);
+			//System.out.println(aktoreberriak[i].getIzena());
 		}
 		quickSort(aktoreberriak);
 		
@@ -94,7 +96,7 @@ public class FilmDB {
 		}
 	}
 
-	private int zatiketa(Aktorea[] taula, int i, int f){
+	private int zatiketa(Aktorea[] taula, int i, int f) {
 		Aktorea lag = taula[i];
 		int ezker = i;
 		int eskuin = f;
@@ -105,7 +107,6 @@ public class FilmDB {
 				eskuin--;
 			if ( ezker < eskuin ) {
 				taula = swap(taula, ezker, eskuin);
-				
 			}
 		}
 		taula[i] = taula[eskuin];
