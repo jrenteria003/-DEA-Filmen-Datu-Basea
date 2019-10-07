@@ -128,20 +128,20 @@ public class FilmDB {
 	}
 
 	public void idatziFitxategia(Aktorea[] aktoreak) {
-	  Path file = Paths.get("/home/jonr/Desktop/idatzi.txt");
-	  try {
-		  Files.deleteIfExists(file);
-		  Files.createFile(file);
-	  } catch (IOException e) {
-		  System.err.println("ERROREA fitxategia sortzen");
-	  }
-	  for(int i = 0; i < aktoreak.length; i++) {
-	    byte[] data = (aktoreak[i].getIzena()+"\n").getBytes();
-	    try {
-	    	Files.write(file, data, StandardOpenOption.APPEND);
-	    } catch (IOException e) {
-	    	System.err.println("ERROREA fitxategian idazterakoan");
-	    }
-	  }
+		Path file = Paths.get("/home/jonr/Desktop/idatzi.txt");
+		try {
+			Files.deleteIfExists(file);
+			Files.createFile(file);
+		} catch (IOException e) {
+			System.err.println("ERROREA fitxategia sortzen");
+		}
+		for(int i = 0; i < aktoreak.length; i++) {
+			byte[] data = (aktoreak[i].getIzena()+"\n").getBytes();
+			try {
+				Files.write(file, data, StandardOpenOption.APPEND);
+			} catch (IOException e) {
+				System.err.println("ERROREA fitxategian idazterakoan");
+			}
+		}
 	}
 }
