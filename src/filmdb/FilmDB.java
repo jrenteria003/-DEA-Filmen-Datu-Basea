@@ -2,10 +2,14 @@ package filmdb;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
-
-//import com.sun.tools.javac.util.List;
 
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -62,12 +66,12 @@ public class FilmDB {
 		}
 		catch(IOException e) {e.printStackTrace();}
 	}
-	
+
 	public void konprobatu() {
 		System.out.println(mapaAktoreak.size());
 		System.out.println(mapaFilmak.size());
 	}
-	
+
 	public void ordenatuAktoreMapa() {
 		Object[] aktorelag;
 		aktorelag = this.mapaAktoreak.keySet().toArray();
@@ -77,17 +81,19 @@ public class FilmDB {
 			aktoreberriak[i] = this.mapaAktoreak.get(aktorelag[i]);
 			//System.out.println(aktoreberriak[i].getIzena());
 		}
+		idatziFitxategia(aktoreberriak);
+
 		quickSort(aktoreberriak);
-		
+
 		for(int i = 0; i < aktoreberriak.length; i++) {
 			System.out.println(aktoreberriak[i].getIzena());
 		}
 	}
-	
+
 	public void quickSort(Aktorea[] taula){
 		quickSort(taula, 0, taula.length-1);
 	}
-		
+
 	private void quickSort(Aktorea[ ] taulaBat, int hasiera, int bukaera){
 		if ( bukaera - hasiera> 0 ) { // taulan elementu bat baino gehiago
 			int indizeaZatiketa = zatiketa(taulaBat, hasiera, bukaera);
@@ -119,5 +125,23 @@ public class FilmDB {
 		taula[ezker] = taula[eskuin];
 		taula[eskuin] = lag;
 		return taula;
+	}
+
+	public void idatziFitxategia(Aktorea[] aktoreak) {
+	  Path file = Paths.get("/home/jonr/Desktop/idatzi.txt");
+	  try {
+		  Files.deleteIfExists(file);
+		  Files.createFile(file);
+	  } catch (IOException e) {
+		  System.err.println("ERROREA fitxategia sortzen");
+	  }
+	  for(int i = 0; i < aktoreak.length; i++) {
+	    byte[] data = (aktoreak[i].getIzena()+"\n").getBytes();
+	    try {
+	    	Files.write(file, data, StandardOpenOption.APPEND);
+	    } catch (IOException e) {
+	    	System.err.println("ERROREA fitxategian idazterakoan");
+	    }
+	  }
 	}
 }
