@@ -151,4 +151,14 @@ public class FilmDB {
 		akt.print();
 		return akt;
 	}
+	
+	public ListaAktoreak getFilmarenAktoreak(String filmaStr) {
+		Filma film = this.mapaFilmak.get(filmaStr);
+		return film.getAktoreak();
+	}
+	
+	public ListaFilmak getAktorearenFilmak(String aktoreaStr) {
+		Aktorea aktore = this.mapaAktoreak.get(aktoreaStr);
+		return aktore.getAgertutakoFilmak();
+	}
 }
