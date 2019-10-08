@@ -37,4 +37,11 @@ public class Filma {
 		this.dirua = this.dirua + d;
 	}
 
+	public void kenduDirua(int d) {
+		this.dirua = this.dirua - d;
+	}
+	
+	public void setDirua(int d) {
+		this.dirua = d;
+	}
 }

@@ -51,14 +51,14 @@ public class FilmDB {
 				System.out.println(f.getIzena());
 				for(int i = 0; i < akt.length; i++) {
 					p = null;
-					p = new Aktorea(akt[i]);
-					if(!mapaAktoreak.containsKey(p.getIzena())) {
+					if(!mapaAktoreak.containsKey(akt[i])) {
+						p = new Aktorea(akt[i]);
 						mapaAktoreak.put(p.getIzena(), p);
-						f.gehituAktorea(p);
 					} else {
-						Aktorea p2 = mapaAktoreak.get(akt[i]);
-						f.gehituAktorea(p2);
+						p = mapaAktoreak.get(akt[i]);
 					}
+					f.gehituAktorea(p);
+					p.gehituFilma(f);
 				}
 				mapaFilmak.put(f.getIzena(), f);
 			}
@@ -85,9 +85,9 @@ public class FilmDB {
 
 		quickSort(aktoreberriak);
 
-		//for(int i = 0; i < aktoreberriak.length; i++) {
-		//	System.out.println(aktoreberriak[i].getIzena());
-		//}
+		for(int i = 0; i < aktoreberriak.length; i++) {
+			System.out.println(aktoreberriak[i].getIzena());
+		}
 	}
 
 	public void quickSort(Aktorea[] taula){
