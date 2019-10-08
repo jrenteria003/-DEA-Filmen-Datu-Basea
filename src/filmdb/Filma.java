@@ -37,8 +37,4 @@ public class Filma {
 		this.dirua = this.dirua + d;
 	}
 
-	public void ordenatuAktoreak() {
-		//TODO
-	}
-
 }

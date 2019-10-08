@@ -6,6 +6,9 @@ public class Main {
 		nireFilmDB = FilmDB.getFilmDB();
 		nireFilmDB.datuakKargatu(args[0]);
 		nireFilmDB.konprobatu();
+		Stopwatch timer = new Stopwatch();
 		nireFilmDB.ordenatuAktoreMapa();
+		System.out.println(timer.elapsedTime());
 	}
+
 }

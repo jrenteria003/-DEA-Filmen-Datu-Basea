@@ -85,9 +85,9 @@ public class FilmDB {
 
 		quickSort(aktoreberriak);
 
-		for(int i = 0; i < aktoreberriak.length; i++) {
-			System.out.println(aktoreberriak[i].getIzena());
-		}
+		//for(int i = 0; i < aktoreberriak.length; i++) {
+		//	System.out.println(aktoreberriak[i].getIzena());
+		//}
 	}
 
 	public void quickSort(Aktorea[] taula){
@@ -143,5 +143,12 @@ public class FilmDB {
 				System.err.println("ERROREA fitxategian idazterakoan");
 			}
 		}
+	}
+	
+	public Aktorea aktoreaAurkitu(String giltza) {
+		Aktorea akt = null;
+		akt = mapaAktoreak.get(giltza);
+		akt.print();
+		return akt;
 	}
 }

@@ -31,4 +31,9 @@ public class Aktorea {
 		return this.izena.compareTo(lag.getIzena());
 	}
 
+	public void print() {
+		System.out.println(this.izena+" agertu den filmak:");
+		this.agertutakoFilmak.print();
+	}
+
 }
