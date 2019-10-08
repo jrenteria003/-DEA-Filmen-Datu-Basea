@@ -66,6 +66,38 @@ public class FilmDB {
 		}
 		catch(IOException e) {e.printStackTrace();}
 	}
+	
+	public Aktorea[] AktoreHashMapToArray(HashMap<String, Aktorea> mapa) {
+		Object[] lag = mapa.keySet().toArray();
+		Aktorea[] emaitza = new Aktorea[lag.length];
+		for(int i = 0; i < lag.length; i++) {
+			emaitza[i] = mapa.get(lag[i]);
+		}
+		return emaitza;
+	}
+	
+	public Filma[] filmHashMapToArray(HashMap<String, Filma> mapa) {
+		Object[] lag = mapa.keySet().toArray();
+		Filma[] emaitza = new Filma[lag.length];
+		for(int i = 0; i < lag.length; i++) {
+			emaitza[i] = mapa.get(lag[i]);
+		}
+		return emaitza;
+	}
+	
+	public ListaFilmak getListaFilmak() {
+		ListaFilmak emaitza = new ListaFilmak();
+		Filma[] lag = this.filmHashMapToArray(mapaFilmak);
+		for(int i = 0; i < lag.length; i++) emaitza.gehitu(lag[i]);
+		return emaitza;
+	}
+	
+	public ListaAktoreak getListaAktoreak() {
+		ListaAktoreak emaitza = new ListaAktoreak();
+		Aktorea[] lag = this.AktoreHashMapToArray(this.mapaAktoreak);
+		for(int i = 0; i < lag.length; i++) emaitza.gehitu(lag[i]);
+		return emaitza;
+	}
 
 	public void konprobatu() {
 		System.out.println(mapaAktoreak.size());

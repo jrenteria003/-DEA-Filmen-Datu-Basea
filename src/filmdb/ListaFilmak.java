@@ -12,12 +12,12 @@ public class ListaFilmak {
 		this.filmak = new ArrayList<Filma>();
 	}
 
-	public void gehituFilma(Filma f) {
+	public void gehitu(Filma f) {
 		if(!this.filmak.contains(f)) this.filmak.add(f);
 		this.length++;
 	}
 
-	public void kenduFilma(Filma f) {
+	public void kendu(Filma f) {
 		if(!this.filmak.contains(f)) this.filmak.remove(f);
 		this.length--;
 	}
@@ -30,6 +30,11 @@ public class ListaFilmak {
 		for(int i = 0; i < this.filmak.size(); i++) {
 			System.out.println(this.filmak.get(i).getIzena());
 		}
+	}
+
+	public Filma get(int i) {
+		//i indizean dagoen filma bueltatzen du
+		return this.filmak.get(i);
 	}
 
 }

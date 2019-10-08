@@ -19,12 +19,12 @@ public class Aktorea {
 	
 	public void gehituFilma(Filma f) {
 		if(!this.agertutakoFilmak.badago(f)) 
-			this.agertutakoFilmak.gehituFilma(f);
+			this.agertutakoFilmak.gehitu(f);
 	}
 	
 	public void kenduFilma(Filma f) {
 		if(this.agertutakoFilmak.badago(f))
-			this.agertutakoFilmak.kenduFilma(f);
+			this.agertutakoFilmak.kendu(f);
 	}
 
 	public int compareTo(Aktorea lag) {

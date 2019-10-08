@@ -44,4 +44,10 @@ public class Filma {
 	public void setDirua(int d) {
 		this.dirua = d;
 	}
+
+	public void print() {
+		System.out.println(this.izena+" filmak "+this.dirua+" dirua lortu du");
+		System.out.println("eta hurrengo aktoreak agertu dira filman:");
+		this.aktoreak.print();
+	}
 }
