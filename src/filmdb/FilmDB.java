@@ -48,7 +48,7 @@ public class FilmDB {
 				String[] iz = linea.split("\\s+--->\\s+");
 				f = new Filma(iz[0]);
 				String[] akt = iz[1].split("\\s+&&&\\s+");
-				System.out.println(f.getIzena());
+				//System.out.println(f.getIzena());
 				for(int i = 0; i < akt.length; i++) {
 					p = null;
 					if(!mapaAktoreak.containsKey(akt[i])) {
@@ -65,6 +65,14 @@ public class FilmDB {
 			entrada.close();
 		}
 		catch(IOException e) {e.printStackTrace();}
+	}
+	
+	public void gehituAktorea(Aktorea akt) {
+		this.mapaAktoreak.put(akt.getIzena(), akt);
+	}
+	
+	public void gehituFilma(Filma film) {
+		this.mapaFilmak.put(film.getIzena(), film);
 	}
 	
 	public Aktorea[] AktoreHashMapToArray(HashMap<String, Aktorea> mapa) {
@@ -86,16 +94,20 @@ public class FilmDB {
 	}
 	
 	public ListaFilmak getListaFilmak() {
+		//System.out.println("START GETLISTAFILMAK()");
 		ListaFilmak emaitza = new ListaFilmak();
 		Filma[] lag = this.filmHashMapToArray(mapaFilmak);
 		for(int i = 0; i < lag.length; i++) emaitza.gehitu(lag[i]);
+		//System.out.println("END GETLISTAFILMAK()");
 		return emaitza;
 	}
 	
 	public ListaAktoreak getListaAktoreak() {
+		//System.out.println("START GETLISTAKTOREAK()");
 		ListaAktoreak emaitza = new ListaAktoreak();
 		Aktorea[] lag = this.AktoreHashMapToArray(this.mapaAktoreak);
 		for(int i = 0; i < lag.length; i++) emaitza.gehitu(lag[i]);
+		//System.out.println("END GETLISTAKTOREAK()");
 		return emaitza;
 	}
 
@@ -103,23 +115,19 @@ public class FilmDB {
 		System.out.println(mapaAktoreak.size());
 		System.out.println(mapaFilmak.size());
 	}
-
-	public void ordenatuAktoreMapa() {
-		Object[] aktorelag;
-		aktorelag = this.mapaAktoreak.keySet().toArray();
-		Aktorea[] aktoreberriak;
-		aktoreberriak = new Aktorea[mapaAktoreak.size()];
-		for(int i = 0; i < aktorelag.length; i++) {
-			aktoreberriak[i] = this.mapaAktoreak.get(aktorelag[i]);
-			//System.out.println(aktoreberriak[i].getIzena());
+	
+	public Aktorea bilatuAktorea(String giltza) {
+		if(this.mapaAktoreak.get(giltza) == null) {
+			return null;
 		}
-		idatziFitxategia(aktoreberriak);
-
+		return this.mapaAktoreak.get(giltza);
+	}	
+	
+	public Aktorea[] ordenatuAktoreMapa() {
+		Aktorea[] aktoreberriak = this.AktoreHashMapToArray(mapaAktoreak);
 		quickSort(aktoreberriak);
-
-		for(int i = 0; i < aktoreberriak.length; i++) {
-			System.out.println(aktoreberriak[i].getIzena());
-		}
+		
+		return aktoreberriak;
 	}
 
 	public void quickSort(Aktorea[] taula){
@@ -175,13 +183,6 @@ public class FilmDB {
 				System.err.println("ERROREA fitxategian idazterakoan");
 			}
 		}
-	}
-	
-	public Aktorea aktoreaAurkitu(String giltza) {
-		Aktorea akt = null;
-		akt = mapaAktoreak.get(giltza);
-		akt.print();
-		return akt;
 	}
 	
 	public ListaAktoreak getFilmarenAktoreak(String filmaStr) {

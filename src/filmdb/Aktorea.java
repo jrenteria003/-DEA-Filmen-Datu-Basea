@@ -5,8 +5,19 @@ public class Aktorea {
 	private ListaFilmak agertutakoFilmak;
 	
 	public Aktorea(String pIzena) {
-		this.izena=pIzena;
+		this.izena = pIzena;
 		agertutakoFilmak = new ListaFilmak();
+	}
+	
+	public Aktorea(String pIzena, Filma[] pFilmak) {
+		this.izena = pIzena;
+		agertutakoFilmak = new ListaFilmak();
+		for(int i = 0; i < pFilmak.length; i++) {
+			agertutakoFilmak.gehitu(pFilmak[i]);
+			pFilmak[i].gehituAktorea(this);
+		}
+		FilmDB nireFilmDB = FilmDB.getFilmDB();
+		nireFilmDB.gehituAktorea(this);
 	}
 
 	public String getIzena() {

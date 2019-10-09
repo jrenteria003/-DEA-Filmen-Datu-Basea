@@ -7,7 +7,7 @@ public class Main {
 		nireFilmDB.datuakKargatu(args[0]);
 		nireFilmDB.konprobatu();
 		Stopwatch timer = new Stopwatch();
-		//nireFilmDB.ordenatuAktoreMapa();
+		nireFilmDB.ordenatuAktoreMapa();
 		System.out.println(timer.elapsedTime());
 		ListaFilmak filmak = nireFilmDB.getListaFilmak();
 		ListaAktoreak aktoreak = nireFilmDB.getListaAktoreak();
@@ -17,6 +17,14 @@ public class Main {
 		akt.print();
 		System.out.println("3 Indizean dagoen filma");
 		filma.print();
+		filma = filmak.get(666);
+		ListaAktoreak aktoreak2 = filma.getAktoreak();
+		aktoreak2.print();
+		System.out.println();
+		Filma[] filmarray = {filma, filmak.get(1936)};
+		Aktorea aktoreberria = new Aktorea("Durruti, Buenaventura", filmarray);
+		aktoreberria.print();
+		Aktorea aktoreberria2 = nireFilmDB.bilatuAktorea("Durruti, Buenaventura");
+		aktoreberria2.print();
 	}
-
 }
