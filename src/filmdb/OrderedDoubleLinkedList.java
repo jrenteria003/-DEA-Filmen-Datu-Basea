@@ -1,11 +1,13 @@
 package filmdb;
 
-import org.w3c.dom.Node;
+public class OrderedDoubleLinkedList<T> implements OrderedListADT<T> {
+	public void add(T elem) {
+		//TODO
+	}
 
-public class DoubleLinkedList<T> implements ListADT<T> {
-	private Node first;
-	private String deskr;
-	private int count;
+	public void merge(OrderedLinkedList<T> z) {
+		//TODO
+	}
 
 	public void setDescr(String nom) {
 		//TODO
