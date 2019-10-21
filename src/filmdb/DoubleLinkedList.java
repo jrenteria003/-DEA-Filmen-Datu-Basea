@@ -132,7 +132,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
 	// an iterator, doesn't implement remove() since it's optional 
 	private class ListIterator implements Iterator<T> { 
-
+		//TODO
 		// KODEA OSATU 
 	} // private class
 

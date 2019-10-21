@@ -24,12 +24,6 @@ public class ListaFilmak {
 		return this.filmak.contains(f);
 	}
 
-	public void print() {
-		for(int i = 0; i < this.filmak.size(); i++) {
-			System.out.println(this.filmak.get(i).getIzena());
-		}
-	}
-
 	public Filma get(int i) {
 		//i indizean dagoen filma bueltatzen du
 		return this.filmak.get(i);

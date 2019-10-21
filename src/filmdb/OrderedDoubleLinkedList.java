@@ -21,9 +21,7 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 
 	public void merge(DoubleLinkedList<T> zerrenda){
 		// KODEA OSATU ETA KOSTUA KALKULATU
-
-
-
+		
 	}
 
 
