@@ -1,4 +1,4 @@
-package listasSimples;
+package filmdb;
 
 public class Pertsona implements Comparable<Pertsona> {
 	
