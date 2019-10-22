@@ -132,8 +132,24 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
 	// an iterator, doesn't implement remove() since it's optional 
 	private class ListIterator implements Iterator<T> { 
-		//TODO
-		// KODEA OSATU 
+		private int count = 0;
+		private Node<T> current = DoubleLinkedList.this.first.prev;
+		private Node<T> lastAccessed = null;
+
+		public boolean hasNext() {
+			return count < DoubleLinkedList.this.size();
+		}
+
+		public T next() {
+			if (!hasNext()) throw new NoSuchElementException();
+			lastAccessed = current;
+			T item = current.data;
+			current = current.next;
+			count++;
+			return item;
+		}
+
+
 	} // private class
 
 
