@@ -26,7 +26,7 @@ public class Main {
 		//		Aktorea aktoreberria2 = nireFilmDB.bilatuAktorea("Durruti, Buenaventura");
 		//		aktoreberria2.print();
 		Aktorea aktorea3 = nireFilmDB.bilatuAktorea("Tarantino, Quentin");
-		aktorea3.print();
+		//aktorea3.print();
 		Aktorea aktorea4 = nireFilmDB.bilatuAktorea("Phoenix, Joaquin");
 		Filma jokerfilma = new Filma("Joker", 666);
 		jokerfilma.gehituAktorea(aktorea4);

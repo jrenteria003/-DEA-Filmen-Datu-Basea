@@ -149,9 +149,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			return item;
 		}
 
-
 	} // private class
-
 
 	public void adabegiakInprimatu() {
 		System.out.println(this.toString());
