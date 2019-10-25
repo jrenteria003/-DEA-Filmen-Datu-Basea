@@ -2,26 +2,39 @@ package filmdb;
 
 public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements UnorderedListADT<T> {
 
+	public UnorderedDoubleLinkedList() {
+		super();
+	}
+
 	public void addToFront(T elem) {
 		// hasieran gehitu
 		// KOSTUA = O(1)
 		Node<T> berria = new Node<T>(elem);
 		Node<T> lehen = this.first;
-		this.first = berria;
-		berria.next = lehen;
-		berria.prev = lehen.prev;
+		berria.next = this.first;
+		berria.prev = this.first.prev;
 		lehen.prev = berria;
+		this.first = berria;
+		
+		this.count++;
 	}
 
 	public void addToRear(T elem) {
 		// bukaeran gehitu
 		// KOSTUA = O(1)
-		Node<T> berria = new Node<T>(elem);
-		Node<T> azkena = this.first.prev;
-		azkena.next = berria;
-		this.first.prev = berria;
-		berria.next = this.first;
-		berria.prev = azkena;
+		if(this.first==null) {
+			this.first = new Node<T>(elem);
+			this.first.prev = this.first;
+		} else {
+			Node<T> berria = new Node<T>(elem);
+			Node<T> azkena = this.first.prev;
+			berria.next = this.first;
+			berria.prev = azkena;
+			azkena.next = berria;
+			this.first.prev = berria;
+
+		}
+		this.count++;
 	}
 
 	public void addAfter(T elem, T target) {
@@ -41,5 +54,6 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 			}
 			unekoa = unekoa.next;
 		}
+		this.count++;
 	}
 }

@@ -1,6 +1,6 @@
 package filmdb;
 
-public class PruebaOrderedDoubleLinkedList {	
+public class ProbaOrderedDoubleLinkedList {	
 
 	public static void main(String[] args)  {
 

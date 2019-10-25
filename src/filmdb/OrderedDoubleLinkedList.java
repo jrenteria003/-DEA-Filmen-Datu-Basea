@@ -24,5 +24,9 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 		
 	}
 
+	public void visualizarNodos() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
