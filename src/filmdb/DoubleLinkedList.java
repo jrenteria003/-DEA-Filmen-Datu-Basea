@@ -106,13 +106,12 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
 	public T find(T elem) {
 		// Elementua bueltatuko du aurkituz gero, eta null bestela
-		if (isEmpty()){
+		if (!isEmpty()){
 			Node<T> unekoa = this.first;
-			boolean aurkitua = false;
-			while(unekoa != this.first || !aurkitua) {
-				System.out.println("while");
+			boolean sartuDa = false;
+			while(unekoa != this.first || !sartuDa) {
+				sartuDa = true;
 				if(unekoa.data.equals(elem)) {
-					aurkitua = false;
 					return unekoa.data;
 				}
 				unekoa = unekoa.next;
