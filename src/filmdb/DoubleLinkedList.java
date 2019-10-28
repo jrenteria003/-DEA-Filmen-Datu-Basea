@@ -57,7 +57,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		Node<T> unekoa = this.first;
 		T emaitza = null;
 		boolean sartuDa = false;
-		while(unekoa != this.first && !sartuDa) {
+		while(unekoa != this.first || !sartuDa) {
 			if(!sartuDa) sartuDa = true;
 			if(unekoa.data.equals(elem)) {
 				emaitza = unekoa.data;
@@ -108,11 +108,11 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		// Elementua bueltatuko du aurkituz gero, eta null bestela
 		if (isEmpty()){
 			Node<T> unekoa = this.first;
-			boolean sartuDa = false;
-			while(unekoa != this.first && !sartuDa) {
-				if(!sartuDa) sartuDa = true;
+			boolean aurkitua = false;
+			while(unekoa != this.first || !aurkitua) {
+				System.out.println("while");
 				if(unekoa.data.equals(elem)) {
-					sartuDa = false;
+					aurkitua = false;
 					return unekoa.data;
 				}
 				unekoa = unekoa.next;
@@ -133,7 +133,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// an iterator, doesn't implement remove() since it's optional 
 	private class ListIterator implements Iterator<T> { 
 		private int count = 0;
-		private Node<T> current = DoubleLinkedList.this.first.prev;
+		private Node<T> current = DoubleLinkedList.this.first;
 		private Node<T> lastAccessed = null;
 
 		public boolean hasNext() {

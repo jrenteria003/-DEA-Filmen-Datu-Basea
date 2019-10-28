@@ -27,12 +27,19 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 			this.first.prev = this.first;
 		} else {
 			Node<T> berria = new Node<T>(elem);
-			Node<T> azkena = this.first.prev;
-			berria.next = this.first;
-			berria.prev = azkena;
-			azkena.next = berria;
-			this.first.prev = berria;
-
+			if(this.first.next == null || this.first == null) {
+				this.first.next = berria;
+				this.first.prev = berria;
+				berria.next = this.first;
+				berria.prev = this.first;
+			} else {
+				Node<T> azkena = this.first.prev;
+				berria.prev = azkena;
+				azkena.next = berria;
+				berria.next = this.first;
+				this.first.prev = berria;
+			}
+			
 		}
 		this.count++;
 	}

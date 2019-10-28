@@ -14,7 +14,6 @@ public class ProbaDoubleLinkedList {
 		}
 	}
 
-
 	public static void main(String[] args)  {
 
 		UnorderedDoubleLinkedList<Integer> l =new UnorderedDoubleLinkedList<Integer>();
