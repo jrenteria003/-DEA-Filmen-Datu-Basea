@@ -16,9 +16,9 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class FilmDB {
-	private ListaFilmak filmak;
 	private static FilmDB gureDB = null;
 	private HashMap<String,Aktorea> mapaAktoreak;
 	private HashMap<String,Filma> mapaFilmak;
@@ -66,9 +66,11 @@ public class FilmDB {
 		//filma mapatik kentzeaz gain,
 		//filman parte hartu dituzten aktoreen
 		//ListaFilmetatik kentzen du
-		ListaAktoreak aktork = film.getAktoreak();
-		for(int i = 0; i < aktork.length; i++) {
-			aktork.get(i).kenduFilma(film);
+		UnorderedDoubleLinkedList<Aktorea> aktork = film.getAktoreak();
+		Iterator<Aktorea> itr = aktork.iterator();
+		while(itr.hasNext()) {
+			Aktorea unekoa = itr.next();
+			unekoa.kenduFilma(film);
 		}
 		mapaFilmak.remove(film.getIzena());
 	}
@@ -123,7 +125,7 @@ public class FilmDB {
 		return this.mapaFilmak.get(giltza);
 	}
 
-	public ListaAktoreak getFilmarenAktoreak(String filmaStr) {
+	public UnorderedDoubleLinkedList<Aktorea> getFilmarenAktoreak(String filmaStr) {
 		Filma film = null;
 		try {
 			film = this.mapaFilmak.get(filmaStr);
@@ -133,7 +135,7 @@ public class FilmDB {
 		return film.getAktoreak();
 	}
 
-	public ListaFilmak getAktorearenFilmak(String aktoreaStr) {
+	public UnorderedDoubleLinkedList<Filma> getAktorearenFilmak(String aktoreaStr) {
 		Aktorea aktore = null;
 		try {
 			aktore = this.mapaAktoreak.get(aktoreaStr);
