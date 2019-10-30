@@ -1,5 +1,7 @@
 package filmdb;
 
+import java.util.Iterator;
+
 public class Aktorea {
 	private String izena;
 	private UnorderedDoubleLinkedList<Filma> agertutakoFilmak;
@@ -54,7 +56,10 @@ public class Aktorea {
 	public void print() {
 		//Aktorearei buruzko informazioa printeatzen ditu
 		System.out.println(this.izena+" agertu den filmak:");
-		//this.agertutakoFilmak.print();
+		Iterator<Filma> itr = this.agertutakoFilmak.iterator();
+		while(itr.hasNext()) {
+			Filma unekoa = itr.next();
+			System.out.println(unekoa.getIzena());
+		}
 	}
-
 }

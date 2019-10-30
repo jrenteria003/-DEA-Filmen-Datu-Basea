@@ -28,11 +28,9 @@ public class ProbaDoubleLinkedList {
 		l.addToRear(666);
 		l.remove(new Integer(7));
 
-
 		System.out.print(" Lista ...............");
 		visualizarNodos(l);
 		System.out.println("Elementu-kopurua: " + l.size());
-
 
 		System.out.println("Proba Find ...............");
 		System.out.println("9? " + l.find(9));

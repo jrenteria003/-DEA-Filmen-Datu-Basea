@@ -57,6 +57,9 @@ public class Filma {
 		//Filmari buruzko informazioa bistaratu
 		System.out.println(this.izena+" filmak "+this.dirua+" dirua lortu du");
 		System.out.println("eta hurrengo aktoreak agertu dira filman:");
-		//this.aktoreak.print();
+		Iterator<Aktorea> itr = this.aktoreak.iterator();
+		while(itr.hasNext()) {
+			Aktorea unekoa = itr.next();
+			System.out.println(unekoa.getIzena());
 	}
 }

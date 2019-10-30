@@ -15,7 +15,7 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 		berria.prev = this.first.prev;
 		lehen.prev = berria;
 		this.first = berria;
-		
+
 		this.count++;
 	}
 
@@ -39,7 +39,7 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 				berria.next = this.first;
 				this.first.prev = berria;
 			}
-			
+
 		}
 		this.count++;
 	}
