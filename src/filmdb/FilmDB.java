@@ -55,9 +55,11 @@ public class FilmDB {
 		//aktorea mapatik kentzeaz gain,
 		//parte hartu dituen filmetatik
 		//kentzen du
-		ListaFilmak films = akt.getAgertutakoFilmak();
-		for(int i = 0; i < films.length; i++) {
-			films.get(i).kenduAktorea(akt);
+		UnorderedDoubleLinkedList films = akt.getAgertutakoFilmak();
+		Iterator<Filma> itr = films.iterator();
+		while(itr.hasNext()) {
+			Filma unekoa = itr.next();
+			unekoa.kenduAktorea(akt);
 		}
 		mapaAktoreak.remove(akt.getIzena());
 	}

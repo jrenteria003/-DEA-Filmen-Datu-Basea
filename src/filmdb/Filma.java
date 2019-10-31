@@ -1,5 +1,7 @@
 package filmdb;
 
+import java.util.Iterator;
+
 public class Filma {
 	private String izena;
 	private UnorderedDoubleLinkedList<Aktorea> aktoreak;
@@ -61,5 +63,11 @@ public class Filma {
 		while(itr.hasNext()) {
 			Aktorea unekoa = itr.next();
 			System.out.println(unekoa.getIzena());
+		}
+	}
+
+	@Override
+	public String toString() {
+		return this.izena;
 	}
 }

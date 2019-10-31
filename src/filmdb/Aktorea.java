@@ -62,4 +62,9 @@ public class Aktorea {
 			System.out.println(unekoa.getIzena());
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return this.izena;
+	}
 }
