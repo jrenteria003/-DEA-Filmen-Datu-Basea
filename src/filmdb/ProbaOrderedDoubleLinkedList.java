@@ -51,7 +51,18 @@ public class ProbaOrderedDoubleLinkedList {
 		System.out.println("7777? " + l2.find(new Pertsona("", "7777")));	
 		System.out.println("8888? " + l2.find(new Pertsona("", "8888")));	
 
-
+		OrderedDoubleLinkedList<Integer> l3 = new OrderedDoubleLinkedList<Integer>();
+		l3.add(8);
+		l3.add(2);
+		//l3.add(10);
+		System.out.println(" Elementu-kopurua: " + l3.size());
+		
+		//l3.merge(l);
+		//l3.visualizarNodos();
+		
+		l.merge(l3);
+		l.visualizarNodos();
+		
 	}
 }
 
