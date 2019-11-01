@@ -119,6 +119,7 @@ public class FilmDB {
 
 	public Aktorea bilatuAktorea(String giltza) {
 		//null itzultzen du aktorea ez badago
+		System.out.println(this.mapaAktoreak.get(giltza));
 		return this.mapaAktoreak.get(giltza);
 	}	
 
