@@ -55,7 +55,7 @@ public class FilmDB {
 		//aktorea mapatik kentzeaz gain,
 		//parte hartu dituen filmetatik
 		//kentzen du
-		UnorderedDoubleLinkedList films = akt.getAgertutakoFilmak();
+		UnorderedDoubleLinkedList<Filma> films = akt.getAgertutakoFilmak();
 		Iterator<Filma> itr = films.iterator();
 		while(itr.hasNext()) {
 			Filma unekoa = itr.next();
@@ -97,23 +97,23 @@ public class FilmDB {
 		return emaitza;
 	}
 
-	public ListaFilmak getListaFilmak() {
-		//HashMapeko filmak ListaFilmak bezala
+	public UnorderedDoubleLinkedList<Filma> getListaFilmak() {
+		//HashMapeko filmak UnorderedDoubleLinkedList<Filma> bezala
 		//itzultzen ditu
-		ListaFilmak emaitza = new ListaFilmak();
+		UnorderedDoubleLinkedList<Filma> emaitza = new UnorderedDoubleLinkedList<Filma>();
 		Filma[] lag = this.filmHashMapToArray(mapaFilmak);
-		for(int i = 0; i < lag.length; i++) emaitza.gehitu(lag[i]);
+		for(int i = 0; i < lag.length; i++) emaitza.addToRear(lag[i]);
 		return emaitza;
 	}
 
-	public ListaAktoreak getListaAktoreak() {
-		//HashMapeko aktoreak ListaAktoreak
+	public UnorderedDoubleLinkedList<Aktorea> getListaAktoreak() {
+		//HashMapeko aktoreak UnorderedDoubleLinkedList<Aktorea>
 		//bezala itzultzen du
 		//Metodo hau HashMap handiekin
 		//ez da eraginkorra
-		ListaAktoreak emaitza = new ListaAktoreak();
+		UnorderedDoubleLinkedList<Aktorea> emaitza = new UnorderedDoubleLinkedList<Aktorea>();
 		Aktorea[] lag = this.AktoreHashMapToArray(this.mapaAktoreak);
-		for(int i = 0; i < lag.length; i++) emaitza.gehitu(lag[i]);
+		for(int i = 0; i < lag.length; i++) emaitza.addToRear(lag[i]);
 		return emaitza;
 	}
 
@@ -210,7 +210,7 @@ public class FilmDB {
 			Scanner entrada = new Scanner(new FileReader(nomF));
 			String linea;
 			Filma f = null;
-			ListaAktoreak aktors = null;
+			//UnorderedDoubleLinkedList<Aktorea> aktors = null;
 			Aktorea p = null;
 			while (entrada.hasNext()) {
 				f = null;
