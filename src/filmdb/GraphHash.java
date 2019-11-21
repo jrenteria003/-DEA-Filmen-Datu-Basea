@@ -70,6 +70,7 @@ public class GraphHash {
 
 	public void datuakKargatu(String nomF) { 
 		
+		//NO REDEFINIR QUE LOS DATOS NO SE METEN AL GRAFO DESDE EL TXT SINO QUE SE METEN DESDE LA LISTA DE ACTRIZOS Y DE LA DE PELICULAS DIRECTAMENTE
 		//redefinir: por cada nuevo string de actor se mete como adabegi(el metodo comprueba si ya esta) 
 		//y como erlazio a la ultima pelicula(el ultimo string antes de --->) y por cada nueva pelicula meterla como adabegi y 
 		//a todos los actores (strings que vengan despues de --->) meterle la pelicula como erlazio
