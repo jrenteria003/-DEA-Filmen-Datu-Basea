@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.*;
 
 
-//HACER SINGLETON
-
 public class GraphHash {
 	private static GraphHash gureGrafoa;
 	private HashMap<String, ArrayList<String>> g;
@@ -44,12 +42,16 @@ public class GraphHash {
 	}
 
 	
-	public void grafoaSortu(AktoreenZerrenda lAktoreak){
+	public void grafoaSortu(HashMap<String,Aktorea> lAktoreak){
 		// Post: aktoreen zerrendatik grafoa sortzen du
 		// Adabegiak aktoreen izenak eta pelikulen izenburuak dira
-		//meter como adabegi a todos los (string) actores primero y luego meter como erlazio a cada uno sus peliculas.
-		//Posteriormente(lo mismo pero con pelis) meter como adabegi a todos las (string) peliculas y a cada una como erlazio sus actores.
-		
+		for (HashMap.Entry<String, Aktorea> entry : lAktoreak.entrySet()) {
+		    String key = entry.getKey();
+		    Aktorea value = entry.getValue();
+		    this.gehituAdabegia(key);
+		    //forEach pelikula in aktore gehituErlazioak(aktore,pelikula)
+		    this.gehituErlazioak(key, );
+		}
 	}
 		
 	public void print(){
@@ -68,46 +70,6 @@ public class GraphHash {
 		//basicamente dijkstra if aurkitura return true;
 	}
 
-	public void datuakKargatu(String nomF) { 
-		
-		//redefinir: por cada nuevo string de actor se mete como adabegi(el metodo comprueba si ya esta) 
-		//y como erlazio a la ultima pelicula(el ultimo string antes de --->) y por cada nueva pelicula meterla como adabegi y 
-		//a todos los actores (strings que vengan despues de --->) meterle la pelicula como erlazio
-		
-		
-		
-		//String moduan jasotzen da irakurri beharreko
-		//fitxategiaren helbidea
-		try{
-			Scanner entrada = new Scanner(new FileReader(nomF));
-			String linea;
-			Filma f = null;
-			//UnorderedDoubleLinkedList<Aktorea> aktors = null;
-			Aktorea p = null;
-			while (entrada.hasNext()) {
-				f = null;
-				linea = entrada.nextLine();
-				String[] iz = linea.split("\\s+--->\\s+");
-				f = new Filma(iz[0]);
-				String[] akt = iz[1].split("\\s+&&&\\s+");
-				//System.out.println(f.getIzena());
-				for(int i = 0; i < akt.length; i++) {
-					p = null;
-					if(!mapaAktoreak.containsKey(akt[i])) {
-						p = new Aktorea(akt[i]);
-						mapaAktoreak.put(p.getIzena(), p);
-					} else {
-						p = mapaAktoreak.get(akt[i]);
-					}
-					f.gehituAktorea(p);
-					p.gehituFilma(f);
-				}
-				mapaFilmak.put(f.getIzena(), f);
-			}
-			entrada.close();
-		}
-		catch(IOException e) {e.printStackTrace();}
-	}
 }
 
 
