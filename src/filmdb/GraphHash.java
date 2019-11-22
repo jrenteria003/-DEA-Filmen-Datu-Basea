@@ -1,5 +1,5 @@
 package filmdb;
-import java.io.FileReader;
+
 import java.io.IOException;
 import java.util.*;
 
@@ -32,7 +32,7 @@ public class GraphHash {
 		}
 	}
 	
-	public void gehituErlazioak(String adabegi, String erlazioa){
+	public void gehituErlazioa(String adabegi, String erlazioa){
 		if(this.g.containsKey(adabegi) && !this.g.get(adabegi).contains(erlazioa)){
 			ArrayList<String> erlazioak=new ArrayList<String> (this.g.get(adabegi));
 			erlazioak.add(erlazioa);
@@ -45,15 +45,34 @@ public class GraphHash {
 	public void grafoaSortu(HashMap<String,Aktorea> lAktoreak){
 		// Post: aktoreen zerrendatik grafoa sortzen du
 		// Adabegiak aktoreen izenak eta pelikulen izenburuak dira
+		
 		for (HashMap.Entry<String, Aktorea> entry : lAktoreak.entrySet()) {
 		    String key = entry.getKey();
 		    Aktorea value = entry.getValue();
+		    ListaFilmak filmakArray=new ListaFilmak ();
+		    filmakArray=value.getAgertutakoFilmak();
 		    this.gehituAdabegia(key);
-		    //forEach pelikula in aktore gehituErlazioak(aktore,pelikula)
-		    this.gehituErlazioak(key, );
+		    //this.gehituAdabetaErla(key, this.arrayFilmIzenak(filmakArray));
+		    Iterator<Filma> iteradorea= filmakArray.getIterator();
+		    while(iteradorea.hasNext()){
+		    	String filmIzena=iteradorea.next().getIzena();
+		    	this.gehituErlazioa(key, filmIzena);
+		    	this.gehituAdabegia(filmIzena);
+		    	this.gehituErlazioa(filmIzena, key);
+		    }
 		}
 	}
-		
+	
+	public ArrayList<String> arrayFilmIzenak(ListaFilmak filmak){
+		ArrayList<String> arrayIzenak=new ArrayList<String>();
+		Iterator<Filma> iteradorea= filmak.getIterator();
+		while (iteradorea.hasNext()){
+			String filmIzena=iteradorea.next().getIzena();
+			arrayIzenak.add(filmIzena);
+		}
+		return arrayIzenak;
+	}
+	
 	public void print(){
 		int i = 1;
 		for (String s: g.keySet()){

@@ -1,5 +1,6 @@
 package filmdb;
 
+import java.util.Iterator;
 import java.util.ArrayList;
 
 public class ListaFilmak {
@@ -42,5 +43,10 @@ public class ListaFilmak {
 	for(int i = 0; i < this.filmak.size(); i++) {
 	  System.out.println(this.filmak.get(i).getIzena());
 	}
+  }
+  
+  public Iterator<Filma> getIterator(){
+	  Iterator<Filma> nireIteradorea= this.filmak.iterator();
+	  return nireIteradorea;
   }
 }
