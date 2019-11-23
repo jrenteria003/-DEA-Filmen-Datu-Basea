@@ -1,6 +1,5 @@
 package filmdb;
 
-import java.io.IOException;
 import java.util.*;
 
 
@@ -84,9 +83,44 @@ public class GraphHash {
 		}
 	}
 	
+	public Iterator<String> erlazioIterator(String key){
+		  Iterator<String> nireIteradorea= this.g.get(key).iterator();
+		  return nireIteradorea;
+	  }
+	
 	public boolean konektatuta(String a1, String a2){
-		//TODO	
-		//basicamente dijkstra if aurkitura return true;
+		boolean aurkituta=false;
+		String aux=a1;
+		ArrayList<String> aztertuak= new ArrayList<String>();
+		ArrayList<String> aztGabeak= new ArrayList<String>();
+		Iterator<String> erlazioak=this.erlazioIterator(aux);
+		String hurrengoa;
+		
+		
+		aztGabeak= this.g.get(aux);			//erlazioak sartu, aztertuak ez daudelako
+		aztertuak.add(aux);					//unekoa sartu aztertua dagoelako
+		
+		while (aurkituta==false && !aztGabeak.isEmpty()){
+			if (a2==aux) aurkituta=true;
+			else{
+				if (aztertuak.contains(aux)){ //mirar si tendria que ser aux o su primera relación
+					aux=aztGabeak.get(0);
+					aztGabeak.remove(aux);
+					erlazioak=this.erlazioIterator(aux);
+					while (erlazioak.hasNext()){
+						hurrengoa=erlazioak.next();
+						if (!aztGabeak.contains(hurrengoa) && !aztertuak.contains(hurrengoa)){
+							aztGabeak.add(hurrengoa);	
+						}		
+					}	
+				}
+				else{					//no me puedo concentrar revisar el codigo mañana y acabarlo
+						
+				}	
+			}
+		
+		}
+		return aurkituta;
 	}
 
 }
