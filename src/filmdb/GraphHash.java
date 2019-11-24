@@ -138,6 +138,57 @@ public class GraphHash {
 		}
 		return aurkituta;
 	}
+	
+	public ArrayList<String> erlazionatuta(String a1, String a2){
+		boolean aurkituta=false;
+		String aux=a1;
+		ArrayList<String> aztertuak= new ArrayList<String>();
+		ArrayList<String> aztGabeak= new ArrayList<String>();
+		Iterator<String> erlazioak=this.erlazioIterator(aux);
+		String hurrengoa;
+		
+		
+		aztGabeak= this.g.get(aux);			//erlazioak sartu, aztertuak ez daudelako
+		aztertuak.add(aux);					//unekoa sartu aztertua dagoelako
+		
+		while (aurkituta==false && !aztGabeak.isEmpty()){
+			if (a2==aux) aurkituta=true;
+			else{
+				if (aztertuak.contains(aux)){ //mirar si tendria que ser aux o su primera relaciónç
+					
+					aux=aztGabeak.get(0);
+					aztGabeak.remove(aux);
+					aztertuak.add(aux);
+					
+					erlazioak=this.erlazioIterator(aux);
+					int i=0;
+					while (erlazioak.hasNext()){
+						hurrengoa=erlazioak.next();
+						if (!aztGabeak.contains(hurrengoa) && !aztertuak.contains(hurrengoa)){
+							aztGabeak.add(i,hurrengoa);
+							i++;
+						}		
+					}	
+				}
+				else{					
+					aztertuak.add(aux);
+					aztGabeak.remove(aux);
+					
+					erlazioak=this.erlazioIterator(aux);
+					int i=0;
+					while (erlazioak.hasNext()){
+						hurrengoa=erlazioak.next();
+						if (!aztGabeak.contains(hurrengoa) && !aztertuak.contains(hurrengoa)){
+							aztGabeak.add(i,hurrengoa);	
+							i++;
+						}		
+					}
+				}	
+			}
+		
+		}
+		return aztertuak;
+	}
 
 }
 
