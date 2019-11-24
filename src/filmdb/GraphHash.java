@@ -103,7 +103,7 @@ public class GraphHash {
 		while (aurkituta==false && !aztGabeak.isEmpty()){
 			if (a2==aux) aurkituta=true;
 			else{
-				if (aztertuak.contains(aux)){ //mirar si tendria que ser aux o su primera relaciónç
+				if (aztertuak.contains(aux)){
 					
 					aux=aztGabeak.get(0);
 					aztGabeak.remove(aux);
@@ -186,6 +186,9 @@ public class GraphHash {
 				}	
 			}
 		
+		}
+		if (aurkituta==false){
+			aztertuak=null;
 		}
 		return aztertuak;
 	}

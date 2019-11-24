@@ -37,5 +37,11 @@ public class Main {
 	aktorea5.print();
 	nireFilmDB.bilatuAktorea("Tarantino, Quentin").print();
 	nireFilmDB.getAktorearenFilmak("Wynn, Natalie").print();
+	
+	GraphHash nireGrafo;
+	nireGrafo=GraphHash.getGraphHash();
+	nireGrafo.grafoaSortu(nireFilmDB.getAktoreenZerrenda());
+	nireGrafo.konektatuta("Phoenix, Joaquin", "Tarantino, Quentin");
+	nireGrafo.erlazionatuta("Phoenix, Joaquin", "Tarantino, Quentin");
   }
 }

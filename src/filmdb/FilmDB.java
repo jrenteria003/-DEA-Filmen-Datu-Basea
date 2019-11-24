@@ -113,6 +113,10 @@ public class FilmDB {
 	return emaitza;
   }
 
+  public HashMap<String,Aktorea> getAktoreenZerrenda(){
+	  return this.mapaAktoreak;
+  }
+  
   public Aktorea bilatuAktorea(String giltza) {
 	//null itzultzen du aktorea ez badago
 	return this.mapaAktoreak.get(giltza);
