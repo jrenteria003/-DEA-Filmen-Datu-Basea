@@ -103,19 +103,35 @@ public class GraphHash {
 		while (aurkituta==false && !aztGabeak.isEmpty()){
 			if (a2==aux) aurkituta=true;
 			else{
-				if (aztertuak.contains(aux)){ //mirar si tendria que ser aux o su primera relación
+				if (aztertuak.contains(aux)){ //mirar si tendria que ser aux o su primera relaciónç
+					
 					aux=aztGabeak.get(0);
 					aztGabeak.remove(aux);
+					aztertuak.add(aux);
+					
 					erlazioak=this.erlazioIterator(aux);
+					int i=0;
 					while (erlazioak.hasNext()){
 						hurrengoa=erlazioak.next();
 						if (!aztGabeak.contains(hurrengoa) && !aztertuak.contains(hurrengoa)){
-							aztGabeak.add(hurrengoa);	
+							aztGabeak.add(i,hurrengoa);
+							i++;
 						}		
 					}	
 				}
-				else{					//no me puedo concentrar revisar el codigo mañana y acabarlo
-						
+				else{					
+					aztertuak.add(aux);
+					aztGabeak.remove(aux);
+					
+					erlazioak=this.erlazioIterator(aux);
+					int i=0;
+					while (erlazioak.hasNext()){
+						hurrengoa=erlazioak.next();
+						if (!aztGabeak.contains(hurrengoa) && !aztertuak.contains(hurrengoa)){
+							aztGabeak.add(i,hurrengoa);	
+							i++;
+						}		
+					}
 				}	
 			}
 		
