@@ -36,7 +36,6 @@ public class Main {
 	nireFilmDB.gehituAktorea(aktorea5);
 	aktorea5.print();
 	nireFilmDB.bilatuAktorea("Tarantino, Quentin").print();
-	nireFilmDB.getAktorearenFilmak("Wynn, Natalie").print();
 	
 	GraphHash nireGrafo;
 	nireGrafo=GraphHash.getGraphHash();
